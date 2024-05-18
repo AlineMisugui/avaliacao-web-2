@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notícias IBGE</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script src="./script.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <dialog id="dialog-filtro">
-        <button id="close-filtro" autofocus>X</button>
-        <p>Oi</p>
+      <button id="close-filtro" autofocus>
+        <span class="material-symbols-outlined">Close</span>
+      </button>
+      <form id="form-filtros" action="">
+        <div>
+          <label for="tipo-filtro">Tipo:</label>
+          <select name="tipo-filtro" id="tipo-filtro">
+            <option value="" selected>Selecione</option>
+            <option value="noticia">Notícia</option>
+            <option value="release">Release</option>
+          </select>
+        </div>
+        <div>
+          <label for="quantidade-filtro">Quantidade:</label>
+          <select name="quantidade-filtro" id="quantidade-filtro">
+            <option value="10" selected>10</option>
+          </select>
+        </div>
+        <div>
+          <label for="de-filtro">De:</label>
+          <input type="date" name="de-filtro" id="de-filtro" />
+        </div>
+        <div>
+          <label for="ate-filtro">Até:</label>
+          <input type="date" name="ate-filtro" id="ate-filtro" />
+        </div>
+        <button type="submit">Aplicar</button>
+      </form>
     </dialog>
+
     <header>
-        <h1>Portal de Notícias do IBGE</h1>
-        <form action="" id="busca-termo-form">
-            <input id="busca-termo" type="text" placeholder="Buscar notícia por termo">
-            <button type="submit" id="botao-busca-termo">🔍</button>
-            <svg id="filtro" width="20" height="20" fill="#f0f0f0" viewBox="0 0 80 90" focusable="false"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
-            </svg>
-            <div id="contador-filtros">
-                <p>0</p>
-            </div>
-            </input>
-        </form>
+      <h1>Portal de Notícias do IBGE</h1>
+      <form action="" id="">
+        <input
+          id="busca-termo"
+          type="text"
+          placeholder="Buscar notícia por termo"
+        />
+        <button type="submit" id="botao-busca-termo">🔍</button>
+        <button id="filtro">
+          <svg
+            width="20"
+            height="20"
+            fill="#f0f0f0"
+            viewBox="0 0 80 90"
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
+          </svg>
+          <div id="contador-filtros">
+            <p>0</p>
+          </div>
+        </button>
+      </form>
     </header>
-    <main>
-
-    </main>
-    <footer>
-
-    </footer>
-</body>
-
+    <main></main>
+    <footer></footer>
+  </body>
 </html>
