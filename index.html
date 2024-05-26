@@ -17,36 +17,42 @@
       <button id="close-filtro" autofocus>
         <span class="material-symbols-outlined">Close</span>
       </button>
-      <form id="form-filtros" action="">
-        <div>
-          <label for="tipo-filtro">Tipo:</label>
-          <select name="tipo-filtro" id="tipo-filtro">
-            <option value="" selected>Selecione</option>
-            <option value="noticia">Notícia</option>
-            <option value="release">Release</option>
-          </select>
+      <form id="form-filtros">
+        <div class="filtro-dois-campos">
+          <div class="filtro-campo">
+            <label for="tipo-filtro">Tipo:</label>
+            <select name="tipo-filtro" id="tipo-filtro">
+              <option value="" selected>Selecione</option>
+              <option value="noticia">Notícia</option>
+              <option value="release">Release</option>
+            </select>
+          </div>
+          <div class="filtro-campo">
+            <label for="quantidade-filtro">Quantidade:</label>
+            <select name="quantidade-filtro" id="quantidade-filtro">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label for="quantidade-filtro">Quantidade:</label>
-          <select name="quantidade-filtro" id="quantidade-filtro">
-            <option value="10" selected>10</option>
-          </select>
+        <div class="filtro-dois-campos">
+          <div class="filtro-campo">
+            <label for="de-filtro">De:</label>
+            <input type="date" name="de-filtro" id="de-filtro" />
+          </div>
+          <div class="filtro-campo">
+            <label for="ate-filtro">Até:</label>
+            <input type="date" name="ate-filtro" id="ate-filtro" />
+          </div>
         </div>
-        <div>
-          <label for="de-filtro">De:</label>
-          <input type="date" name="de-filtro" id="de-filtro" />
-        </div>
-        <div>
-          <label for="ate-filtro">Até:</label>
-          <input type="date" name="ate-filtro" id="ate-filtro" />
-        </div>
-        <button type="submit">Aplicar</button>
+        <button type="submit" id="aplicar-filtro">Aplicar</button>
       </form>
     </dialog>
 
     <header>
       <h1>Portal de Notícias do IBGE</h1>
-      <form action="" id="">
+      <form>
         <input
           id="busca-termo"
           type="text"
@@ -64,13 +70,13 @@
           >
             <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
           </svg>
-          <div id="contador-filtros">
-            <p>0</p>
-          </div>
+          <div id="contador-filtros"></div>
         </button>
       </form>
     </header>
-    <main></main>
+    <main>
+      <ul id="lista-noticias"></ul>
+    </main>
     <footer></footer>
   </body>
 </html>
