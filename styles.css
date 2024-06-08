@@ -17,7 +17,7 @@ header {
 body {
   display: grid;
   grid-template-rows: 3;
-  min-width: 100vw;
+  min-width: 99vw;
   max-width: 100ch;
   max-height: 100ch;
 }
@@ -31,10 +31,10 @@ body {
 }
 
 #botao-busca-termo {
-  padding-top: 1.5%;
+  padding-top: 1.6%;
   background-color: transparent;
   position: absolute;
-  right: 26.5%;
+  right: 25.5%;
 }
 
 #filtro {
@@ -143,6 +143,15 @@ footer {
   background-color: #4682b4;
 }
 
+footer {
+  text-align: center;
+}
+
+footer > p {
+  color: white;
+  padding: 2% 0%;
+}
+
 main {
   background-color: #f0f0f0;
 }
@@ -189,6 +198,36 @@ main {
   text-decoration: none;
   color: black;
   text-align: center;
+}
+
+#paginacao {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 2%;
+}
+
+.page-item {
+  list-style-type: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #4682b4;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #4682b4;
+  width: 2.8%;
+  text-align: center;
+}
+
+.page-item:hover {
+  background-color: #4682b4;
+  color: white;
+}
+
+#selected-page {
+  background-color: white;
+  color: #B3B3B3;
+  border: 1px solid #B3B3B3;
 }
 
 @media screen and (max-width: 500px) {

@@ -68,8 +68,8 @@ function setValuesFromUrl() {
 
 function setContadorFiltros() {
   const contadorFiltros = document.getElementById("contador-filtros");
-  const filtrosAtivos = searchParams.toString().split("&").length;
-  contadorFiltros.textContent = filtrosAtivos;
+  let filtrosAtivos = searchParams.toString().split("&").length;
+  contadorFiltros.textContent = searchParams.has("page") ? filtrosAtivos - 1 : filtrosAtivos;
 }
 
 function generateUrl() {
@@ -87,6 +87,7 @@ function fetchNoticias() {
     .then((data) => {
       const noticias = data.items;
       renderNoticias(noticias);
+      renderPagination(data.totalPages);
     });
 }
 
@@ -96,10 +97,12 @@ function renderNoticias(noticias) {
     const li = document.createElement("li");
     li.className = "noticia";
 
-    const img = renderImagemNoticia(noticia);
     const divWrapper = renderNoticiaResumo(noticia);
+    if (noticia.imagens != "") {
+      const img = renderImagemNoticia(noticia);
+      li.appendChild(img);
+    }
 
-    li.appendChild(img);
     li.appendChild(divWrapper);
     listaNoticias.appendChild(li);
   });
@@ -178,6 +181,56 @@ function contarDiasPassados(data) {
   };
 
   return mensagens[dias] || mensagens.default;
+}
+
+function renderPagination(totalPages) {
+  const pagination = document.getElementById("paginacao");
+  const selectedPage = searchParams.get("page") || 1;
+  const startPage = selectedPage > 5 ? selectedPage - 5 : 1; 
+  const endPage = startPage + 9 < totalPages ? startPage + 9 : totalPages;
+
+  renderPreviousPage(pagination, selectedPage);
+
+  for (let i = startPage; i <= endPage; i++) {
+    const li = document.createElement("li");
+    li.className = "page-item";
+    li.textContent = i;
+    li.style.display = "inline-block";
+    li.addEventListener("click", () => {
+      searchParams.set("page", i);
+      window.location.search = searchParams.toString();
+    });
+    if (i == selectedPage) {
+      li.id = "selected-page";
+    }
+    pagination.appendChild(li);
+  }
+
+  renderNextPage(pagination, selectedPage);
+}
+
+function renderPreviousPage(pagination, selectedPage) {
+  const liPrevious = document.createElement("li");
+  liPrevious.className = "page-item";
+  liPrevious.textContent = "<";
+  liPrevious.style.display = "inline-block";
+  liPrevious.addEventListener("click", () => {
+    searchParams.set("page", selectedPage - 1);
+    window.location.search = searchParams.toString();
+  });
+  pagination.appendChild(liPrevious);
+}
+
+function renderNextPage(pagination, selectedPage) {
+  const liNext = document.createElement("li");
+  liNext.className = "page-item";
+  liNext.textContent = ">";
+  liNext.style.display = "inline-block";
+  liNext.addEventListener("click", () => {
+    searchParams.set("page", Number(selectedPage) + 1);
+    window.location.search = searchParams.toString();
+  });
+  pagination.appendChild(liNext);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
