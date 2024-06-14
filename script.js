@@ -165,10 +165,8 @@ function renderImagemNoticia(noticia) {
 }
 
 function contarDiasPassados(data) {
-  const partes = data.split("/");
-  const dataFormatada = `${partes[2].split(" ")[0]}-${partes[1]}-${partes[0]}T${
-    partes[2].split(" ")[1]
-  }`;
+  const parteData = data.split("T");
+  const dataFormatada = parteData[0].split("-").reverse().join("-");
   const dataPublicacao = new Date(dataFormatada);
   const dataAtual = new Date();
   const diferenca = dataAtual - dataPublicacao;
