@@ -73,7 +73,7 @@ function setContadorFiltros() {
 }
 
 function generateUrl() {
-  const url = "http://servicodados.ibge.gov.br/api/v3/noticias";
+  const url = "https://servicodados.ibge.gov.br/api/v3/noticias";
   const params = new URLSearchParams(window.location.search);
   const paramsString = params.toString();
   return paramsString ? `${url}?${paramsString}` : url;
